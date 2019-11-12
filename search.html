@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="css/style.css">
+	<link href='css/menubar.css' rel='stylesheet'>
+	<title>CS 355 Home Page</title>
+</head>
+
+<body>
+	<br>
+	<ul>
+		<li>
+			<a class="mainPage" href="index.html">SARA</a>
+		</li><br><br><br><br>
+		<li><a>Course</a>
+			<ul>
+				<li><a href="https://www.zybooks.com/">Zybook</a></li>
+				<li><a href="https://tophat.com/">TopHat</a></li>
+				<li><a href="https://tinyurl.com/CSCI355-Fall2019">Course Google Drive</a></li>
+				<li><a href="https://www.w3schools.com">W3Schools</a></li>
+			</ul>
+		</li>
+		<li><a href="search.html">Search</a></li>
+		<li><a>About</a>
+			<ul>
+				<li><a>Developers</a>
+					<ul>
+						<li>Yubo Sun</li>
+					</ul>
+				</li>
+				<li><a>Contact Us</a>
+					<ul>
+						<li>dacece92@gmail.com</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a>Browser</a>
+			<ul>
+				<li><a>Navigator</a>
+					<ul>
+						<li><a>appName</a></li>
+						<li><a>product</a></li>
+						<li><a>appVersion</a></li>
+						<li><a>userAgent</a></li>
+						<li><a>platform</a></li>
+						<li><a>language</a></li>
+					</ul>
+				</li>
+				<li><a>Window</a>
+					<ul>
+						<li><a>inherHeight</a></li>
+						<li><a>inherWidth</a></li>
+					</ul>
+				</li>
+				<li><a>Screen</a>
+					<ul>
+						<li><a>width</a></li>
+						<li><a>height</a></li>
+						<li><a>availWidth</a></li>
+						<li><a>availHeight</a></li>
+						<li><a>colorDepth</a></li>
+						<li><a>plxelDepth</a></li>
+					</ul>
+				</li>
+				<li><a>Location</a>
+					<ul>
+						<li><a>href</a></li>
+						<li><a>hostname</a></li>
+						<li><a>pathname</a></li>
+						<li><a>protocol</a></li>
+					</ul>
+				</li>
+				<li><a>Geolocation</a>
+					<ul>
+						<li><a>latitude</a></li>
+						<li><a>longitude</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<br><br><br>
+
+
+	<!--<input class="upload" type="file" value="Upload File">
+	<input class="download" type="file" value="Download File">-->
+	<div style="position:relative">
+		<div>
+			<input type="file" id="real-file" hidden="hidden" />
+			<button type="button" id="custom-button">UPLOAD FILE</button>
+			<span id="custom-text">No file chosen, yet.</span>
+			<select id="filetype">
+				<option value="JSON">JSON</option>
+				<option value="XML">XML</option>
+				<option value="CSV">CSV</option>
+			</select>
+		</div>
+
+		<!-- <div class="div1"><input class="upload" type="file" style="opacity:0; position:absolute; z-index: 2;"></div>
+		<div class="div2"><input class="bupload" type="button" value="Upload File"
+				style="position:relative; z-index: 1;"></div> -->
+		<!-- <div class="div3"><input class="download" type="file" style="opacity:0; position:absolute; z-index: 2;"></div>
+		<div class="div4"><input class="bdownload" type="button" value="Download File"
+				style="position:relative; z-index: 1;"></div> -->
+
+		<div>
+			<input type="file" id="real-file" hidden="hidden" />
+			<button type="button" id="custom-button">DOWNLOAD FILE</button>
+			<span id="custom-text">No file chosen, yet.</span>
+		</div>
+	</div>
+
+	<div id="display">
+
+	</div>
+
+
+
+	<script src="js/download.js"></script>
+	<script src="js/upload.js"></script>
+
+</body>
+
+</html>
