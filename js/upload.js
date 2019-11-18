@@ -1,23 +1,27 @@
-const realFileBtn = document.getElementById("real-file");
-const customBtn = document.getElementById("custom-button");
+const realFileBtn1 = document.getElementById("real-file1");
+const customBtn1 = document.getElementById("custom-button1");
 const customTxt = document.getElementById("custom-text");
 const filetypeinput = document.getElementById("filetype");
+const saveasjson = document.getElementById("SAJSON");
+const saveasxml = document.getElementById("SAXML");
+const saveascsv = document.getElementById("SACSV");
 const display = document.getElementById("display");
+const customBtn2 = document.getElementById("custom-button2");
 
 let filetype = "json";
 filetypeinput.addEventListener("change", function () {
     filetype = filetypeinput.value.toLowerCase();
 })
 
-customBtn.addEventListener("click", function () {
-    realFileBtn.click();
+customBtn1.addEventListener("click", function () {
+    realFileBtn1.click();
 });
 
-realFileBtn.addEventListener("change", function (event) {
+realFileBtn1.addEventListener("change", function (event) {
     customTxt.innerHTML = "No file chosen, yet.";
 
-    if (realFileBtn.value) {
-        customTxt.innerHTML = realFileBtn.value.match(
+    if (realFileBtn1.value) {
+        customTxt.innerHTML = realFileBtn1.value.match(
             /[\/\\]([\w\d\s\.\-\(\)]+)$/
         )[1];
 
@@ -28,21 +32,31 @@ realFileBtn.addEventListener("change", function (event) {
                 reader.onload = function () {
                     // let text = reader.result;
                     let text = reader.result;
-                    console.log(text);
+                    // console.log(text);
                     let json = JSON.parse(text);
+                    let i = 0;
                     json.Result.forEach(element => {
+                        
                         let div = document.createElement("div");
                         div.className = "display-element"
+
+                        let cbox = document.createElement("input");
+                        cbox.className = "checkbox";
+                        cbox.type="checkbox";
+                        cbox.id = "checkbox-"+i;
+                        i++;
 
                         let h4 = document.createElement("h4");
                         h4.className = "red";
                         let h4Text = document.createTextNode(element.title);
+                        //h4.appendChild(cbox);
                         h4.appendChild(h4Text);
 
                         let newlink = document.createElement('a');
                         let linkText = document.createTextNode(element.url);
                         newlink.appendChild(linkText);
                         newlink.href = element.url;
+                        newlink.className = "newlink";
 
                         let desc = document.createElement("p");
                         desc.classList.add("black");
@@ -50,6 +64,7 @@ realFileBtn.addEventListener("change", function (event) {
                         let descText = document.createTextNode(element.description);
                         desc.appendChild(descText);
 
+                        div.appendChild(cbox)
                         div.appendChild(h4);
                         div.appendChild(newlink);
                         div.appendChild(desc);
@@ -67,7 +82,7 @@ realFileBtn.addEventListener("change", function (event) {
                 reader.onload = function () {
                     // let text = reader.result;
                     let text = reader.result;
-                    console.log(text)
+                    // console.log(text)
                     let txt ="";
                     let parser = new DOMParser();
                     let xmlDoc = parser.parseFromString(text, "text/xml");
@@ -77,15 +92,22 @@ realFileBtn.addEventListener("change", function (event) {
                         let div = document.createElement("div");
                         div.className = "display-element";
                         
+                        let cbox = document.createElement("input");
+                        cbox.className = "checkbox";
+                        cbox.type="checkbox";
+                        cbox.id ="checkbox-"+i;
+
                         let h4 = document.createElement("h4"); 
                         h4.className = "red";
                         let h4Text = document.createTextNode(xmlDoc.getElementsByTagName("title")[i].childNodes[0].nodeValue);
+                        
                         h4.appendChild(h4Text);
 
                         let newlink =document.createElement('a');
                         let linkText = document.createTextNode(xmlDoc.getElementsByTagName("url")[i].childNodes[0].nodeValue);
                         newlink.appendChild(linkText);
-                        newlink.href = xmlDoc.getElementsByTagName("url")[i].childNodes[0].nodeValue;
+                        newlink.href = xmlDoc.getElementsByTagName("url")[i].childNodes[0].nodeValue;4
+                        newlink.className = "newlink";
 
                         let desc = document.createElement("p");
                         desc.classList.add("black");
@@ -93,30 +115,16 @@ realFileBtn.addEventListener("change", function (event) {
                         let descText = document.createTextNode(xmlDoc.getElementsByTagName("description")[i].childNodes[0].nodeValue);
                         desc.appendChild(descText);
 
+                        div.appendChild(cbox);
                         div.appendChild(h4);
                         div.appendChild(newlink);
                         div.appendChild(desc);
 
                         display.appendChild(div);
+
                     }
                 }
 
-
-                // let getXMLFile = function(path, callback){
-                //     let request = new XMLHttpRequest();
-                //     request.open("GET", path);
-                //     request.setRequestHeader("Content-Type", "text/xml");
-                //     request.onreadystatechange = function(){
-                //         if(request.readyState === 4 && request.status === 200){
-                //             callback(request.responseXML);
-                //         }
-                //     };
-                //     request.send();
-                // }
-
-                // getXMLFile(customTxt.innerHTML, function(xml){
-                //     console.log(xml);
-                // });
                 reader.readAsText(input.files[0]);
             }
             else if (filetype.match("csv")) {
@@ -125,7 +133,7 @@ realFileBtn.addEventListener("change", function (event) {
                 reader.onload = function () {
                     // let text = reader.result;
                     let text = reader.result;
-                    console.log(text)
+                    // console.log(text)
                     let csv1 = text.split('\n');
                     //console.log(csv1[1]);
                     
@@ -135,15 +143,22 @@ realFileBtn.addEventListener("change", function (event) {
                         let div = document.createElement("div");
                         div.className = "display-element";
 
+                        let cbox = document.createElement("input");
+                        cbox.className = "checkbox";
+                        cbox.id = "checkbox-" + i;
+                        cbox.type="checkbox";
+
                         let h4 = document.createElement("h4"); 
                         h4.className = "red";
                         let h4Text = document.createTextNode(csv[0]);
+                        
                         h4.appendChild(h4Text);
 
                         let newlink =document.createElement('a');
                         let linkText = document.createTextNode(csv[1]);
                         newlink.appendChild(linkText);
                         newlink.href = csv[1];
+                        newlink.className = "newlink";
 
                         let desc = document.createElement("p");
                         desc.classList.add("black");
@@ -151,6 +166,7 @@ realFileBtn.addEventListener("change", function (event) {
                         let descText = document.createTextNode(csv[2]);
                         desc.appendChild(descText);
 
+                        div.appendChild(cbox);
                         div.appendChild(h4);
                         div.appendChild(newlink);
                         div.appendChild(desc);
@@ -158,53 +174,137 @@ realFileBtn.addEventListener("change", function (event) {
                         display.appendChild(div);
 
                     }
-                    // csv1.Result.forEach(element => {
-                        
-                    //     let csv = element.split(',');
-                    //     let div = document.createElement("div");
-                    //     div.className = "display-element"
-
-                    //     let h4 = document.createElement("h4");
-                    //     h4.className = "red";
-                    //     let h4Text = document.createTextNode();
-                    //     h4.appendChild(h4Text);
-
-                    //     let newlink = document.createElement('a');
-                    //     let linkText = document.createTextNode();
-                    //     newlink.appendChild(linkText);
-                    //     newlink.href = element.url;
-
-                    //     let desc = document.createElement("p");
-                    //     desc.classList.add("black");
-                    //     desc.classList.add("italic")
-                    //     let descText = document.createTextNode(element.description);
-                    //     desc.appendChild(descText);
-
-                    //     div.appendChild(h4);
-                    //     div.appendChild(newlink);
-                    //     div.appendChild(desc);
-
-                    //     display.appendChild(div);
-                    //})
                 };
                 reader.readAsText(input.files[0]);
                 
             }
-
         }
         else {
             customTxt.innerHTML = "File type doesn't match";
         }
 
-        // let newlink = document.createElement('a');
-        // let linkText = document.createTextNode(customTxt.innerHTML);
-        // newlink.appendChild(linkText);
-        // newlink.title = "my title text";
-        // newlink.href = "assets/" + customTxt.innerHTML;
-
-        // let display = document.getElementById("display");
-        // display.appendChild(newlink);
     } else {
         customTxt.innerHTML = "No file chosen, yet.";
     }
 });
+
+saveasjson.addEventListener("click", function(){
+    //let display= document.getElementsByClassName(".display-element");
+    var check = document.getElementsByClassName("checkbox");
+    var elements = document.getElementsByClassName("display-element");
+    // alert("test");
+    let selected = new Array();
+    for(let i=0; i < check.length; i++){
+        if(check[i].checked){
+            
+            // console.log(elements[i].childNodes[1].innerHTML);
+            // console.log(elements[i].childNodes[2].innerHTML);
+            // console.log(elements[i].childNodes[3].innerHTML);
+            selected.push(check[i]);
+            // console.log(check[i]);
+        }
+    }
+
+    if(selected.length == 0){
+        alert("No Result is choosen!");
+        return;
+    }
+
+    let data={};
+    for (let i = 0; i < selected.length; i++) {
+        let title = elements[i].childNodes[1].innerText;
+        let url = elements[i].childNodes[2].innerText;
+        let desc = elements[i].childNodes[3].innerText;
+        data={"Result":{ "title": title, "url": url, "description": desc}};
+        }
+    data = JSON.stringify(data)
+
+    console.log(data);
+
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/json;charset=utf-8,' + encodeURI(data);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'searchresults.json';
+    hiddenElement.click();
+});
+        
+saveasxml.addEventListener("click", function(){
+    //let display= document.getElementsByClassName(".display-element");
+    var check = document.getElementsByClassName("checkbox");
+    var elements = document.getElementsByClassName("display-element");
+    
+    // alert("test");
+    var selected = new Array();
+    for(let i=0; i < check.length; i++){
+        if(check[i].checked){
+            // console.log(elements[i].childNodes[1].innerHTML);
+            // console.log(elements[i].childNodes[2].innerHTML);
+            // console.log(elements[i].childNodes[3].innerHTML);
+            // selected.push(check[i]);
+            // console.log(check[i]);
+        }
+    }
+
+    if(selected.length == 0){
+        alert("No Result is choosen!");
+        return;
+    }
+
+    let data = "<?xml version='1.0' encoding='UTF-8'?>\n<results>\n";
+    for(let i=0; i < selected.length; i++){
+        let title = elements[i].childNodes[1].innerText;
+        let url = elements[i].childNodes[2].innerText;
+        let desc = elements[i].childNodes[3].innerText;
+        data += "<result>\n<title>" + title + "</title>\n<url>" + url + "</url>\n<description>" + desc + "</description>\n</result>\n"
+    }
+    data += "</results>";
+
+    console.log(data);
+
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/xml;charset=utf-8,' + encodeURI(data);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'searchresults.xml';
+    hiddenElement.click();
+});
+
+
+saveascsv.addEventListener("click", function(){
+    var check = document.getElementsByClassName("checkbox");
+    var elements = document.getElementsByClassName("display-element");
+    
+    // alert("test");
+    var selected = new Array();
+    for(let i=0; i < check.length; i++){
+        if(check[i].checked){
+            // console.log(elements[i].childNodes[1].innerHTML);
+            // console.log(elements[i].childNodes[2].innerHTML);
+            // console.log(elements[i].childNodes[3].innerHTML);
+            selected.push(check[i]);
+            // console.log(check[i]);
+        }
+    }
+
+    if(selected.length == 0){
+        alert("No Result is choosen!");
+        return;
+    }
+
+    let data = "";
+    for(let i=0; i < selected.length; i++){
+        let title = elements[i].childNodes[1].innerText;
+        let url = elements[i].childNodes[2].innerText;
+        let desc = elements[i].childNodes[3].innerText;
+        data += '"' + title + '","' + url + '","' + desc + '"' + '\n';
+    }
+    
+
+    //console.log(data);
+
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(data);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'searchresults.csv';
+    hiddenElement.click();
+});
+    
