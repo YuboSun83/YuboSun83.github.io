@@ -7,6 +7,9 @@ const saveasxml = document.getElementById("SAXML");
 const saveascsv = document.getElementById("SACSV");
 const display = document.getElementById("display");
 const customBtn2 = document.getElementById("custom-button2");
+const selectall = document.getElementById("SA");
+const reselect = document.getElementById("RS");
+
 
 let filetype = "json";
 filetypeinput.addEventListener("change", function () {
@@ -308,3 +311,16 @@ saveascsv.addEventListener("click", function(){
     hiddenElement.click();
 });
     
+selectall.addEventListener("click", function(){
+    var check = document.getElementsByClassName("checkbox");
+    for(let i=0; i< check.length; i++){
+        check[i].checked = true;
+    }
+});
+
+reselect.addEventListener("click", function(){
+    var check = document.getElementsByClassName("checkbox");
+    for(let i=0; i< check.length; i++){
+        check[i].checked = false;
+    }
+});
