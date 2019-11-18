@@ -128,6 +128,28 @@ input{
 	cursor: pointer;
 }
 
+#SA{
+    padding: 10px;
+    color: white;
+    background-color: rgb(59, 59, 214);
+    border: 1px solid #000;
+    border-radius: 5px;
+	cursor: pointer;
+}
+
+#RS{
+    padding: 10px;
+    color: white;
+    background-color: rgb(59, 59, 214);
+    border: 1px solid #000;
+    border-radius: 5px;
+	cursor: pointer;
+}
+
+#RS:hover {
+    background-color: #5654ce;
+  }
+
 #custom-button1:hover {
     background-color: #5654ce;
   }
@@ -143,6 +165,10 @@ input{
 #SACSV:hover {
     background-color: #5654ce;
 }
+
+#SA:hover {
+    background-color: #5654ce;
+  }
 
 #custom-text {
     margin-left: 10px;
