@@ -92,9 +92,7 @@ input{
 	font-size:15px;
 }
 
-
-
-#custom-button {
+#custom-button1 {
     padding: 10px;
     color: white;
     background-color: rgb(59, 59, 214);
@@ -103,11 +101,50 @@ input{
 	cursor: pointer;
   }
   
-  #custom-button:hover {
+#SAJSON{
+    padding: 10px;
+    color: white;
+    background-color: rgb(59, 59, 214);
+    border: 1px solid #000;
+    border-radius: 5px;
+	cursor: pointer;
+}
+
+#SAXML{
+    padding: 10px;
+    color: white;
+    background-color: rgb(59, 59, 214);
+    border: 1px solid #000;
+    border-radius: 5px;
+	cursor: pointer;
+}
+
+#SACSV{
+    padding: 10px;
+    color: white;
+    background-color: rgb(59, 59, 214);
+    border: 1px solid #000;
+    border-radius: 5px;
+	cursor: pointer;
+}
+
+#custom-button1:hover {
     background-color: #5654ce;
   }
   
-  #custom-text {
+#SAJSON:hover {
+    background-color: #5654ce;
+  }
+
+#SAXML:hover {
+    background-color: #5654ce;
+} 
+
+#SACSV:hover {
+    background-color: #5654ce;
+}
+
+#custom-text {
     margin-left: 10px;
     font-family: sans-serif;
     color: #aaa;
@@ -118,15 +155,31 @@ input{
 	background-color: white;
 	opacity:.8;
 	border-left: 20px;
+	position: relative;
+	top:150px;
 }
 .red{
 	color: red;
-	border-left:20px;
+	margin-left: 50px;	
 }
 .black{
-    color: black;
+	color: black;
+	margin-left:30px;
 }
 
 .italic{
     font-style: italic;
+}
+
+.checkbox{
+	widows: 15px;
+	height: 15px;
+}
+
+.newlink{
+	margin-left: 30px;
+}
+
+#filetype2{
+	width:180px;
 }
