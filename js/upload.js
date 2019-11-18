@@ -240,7 +240,7 @@ saveasxml.addEventListener("click", function(){
             // console.log(elements[i].childNodes[1].innerHTML);
             // console.log(elements[i].childNodes[2].innerHTML);
             // console.log(elements[i].childNodes[3].innerHTML);
-            // selected.push(check[i]);
+            selected.push(check[i]);
             // console.log(check[i]);
         }
     }
