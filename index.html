@@ -1,99 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="css/style.css">
-	<link href='css/menubar.css' rel='stylesheet'>
-	<title>CS 355 Home Page</title>
-</head>
-<script src="js/download.js"></script>
-<script src="js/upload.js"></script>
-<body>
-	<br>
-	<ul>
-		<li>
-			<a class="mainPage" href="index.html">SARA</a>
-		</li><br><br><br><br>
-		<li><a>Course</a>
-			<ul>
-				<li><a href="https://www.zybooks.com/">Zybook</a></li>
-				<li><a href="https://tophat.com/">TopHat</a></li>
-				<li><a href="https://tinyurl.com/CSCI355-Fall2019">Course Google Drive</a></li>
-				<li><a href="https://www.w3schools.com">W3Schools</a></li>
-			</ul>
-		</li>
-				<li><a>Search</a>
-			<ul>
-				<li><a href="search.html">File</a></li>
-				<li><a href="#">Google</a></li>
-			</ul>
-		</li>
-		<li><a>About</a>
-			<ul>
-				<li><a>Developers</a>
-					<ul>
-						<li>Yubo Sun</li>
-					</ul>
-				</li>
-				<li><a>Contact Us</a>
-					<ul>
-						<li>dacece92@gmail.com</li>
-					</ul>
-				</li>
-			</ul>
-		</li> 	
-		<li><a>Browser</a>
-			<ul>
-				<li><a>Navigator</a>
-					<ul>
-						<li><a>appName</a></li>
-						<li><a>product</a></li>
-						<li><a>appVersion</a></li>
-						<li><a>userAgent</a></li>
-						<li><a>platform</a></li>
-						<li><a>language</a></li>
-					</ul>
-				</li>
-				<li><a>Window</a>
-					<ul>
-						<li><a>inherHeight</a></li>
-						<li><a>inherWidth</a></li>
-					</ul>
-				</li>
-				<li><a>Screen</a>
-					<ul>
-						<li><a>width</a></li>
-						<li><a>height</a></li>
-						<li><a>availWidth</a></li>
-						<li><a>availHeight</a></li>
-						<li><a>colorDepth</a></li>
-						<li><a>plxelDepth</a></li>
-					</ul>
-				</li>
-				<li><a>Location</a>
-					<ul>
-						<li><a>href</a></li>
-						<li><a>hostname</a></li>
-						<li><a>pathname</a></li>
-						<li><a>protocol</a></li>
-					</ul>
-				</li>
-				<li><a>Geolocation</a>
-					<ul>
-						<li><a>latitude</a></li>
-						<li><a>longitude</a></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Google Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/googleapi.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  </head>
+  <body>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">Course</button>
+      <div class="dropdown-content">
+        <a href="https://www.zybooks.com/"target="_blank">ZyBooks</a>
+        <a href="https://tophat.com/"target="_blank">TopHat</a>
+        <a href="https://www.google.com/drive/"target="_blank">Google Drive</a>
+        <a href="https://www.w3schools.com/"target="_blank">W3Schools.com</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Search</button>
+      <div class="dropdown-content">
+        <a href="search.html">Search File</a>
+        <a href="googleSearch.html">Search Google</a>
+        <a href="mysearchengine.html">My Search Engine</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Browser</button>
+      <div class="dropdown-content">
+        <a href="navigator.html">Navigator</a>
+        <a href="window.html">Window</a>
+        <a href="screen.html">Screen</a>
+        <a href="location.html">Location</a>
+        <a href="geolocation.html">Geolocation</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">About</button>
+      <div class="dropdown-content">
+        <a href="aboutme.html">About Me</a>
+        <a href="contectus.html">Contact Us</a>
+      </div> 
+    </div> 
+  </div> 
 
 	<!--<p class="search"><a href="#"><input type="text" placeholder="Search"><img src="search.png"></a></p>
 	-->
 
-	<h1>This is my home page for CS 355</h1>
+	<h1 style="color:white">This is my home page for CS 355</h1>
 
 </body>
 </html>
