@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Google Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/googleapi.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  </head>
+  <body>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">Course</button>
+      <div class="dropdown-content">
+        <a href="https://www.zybooks.com/"target="_blank">ZyBooks</a>
+        <a href="https://tophat.com/"target="_blank">TopHat</a>
+        <a href="https://www.google.com/drive/"target="_blank">Google Drive</a>
+        <a href="https://www.w3schools.com/"target="_blank">W3Schools.com</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Search</button>
+      <div class="dropdown-content">
+        <a href="search.html">Search File</a>
+        <a href="googleSearch.html">Search Google</a>
+        <a href="mysearchengine.html">My Search Engine</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Browser</button>
+      <div class="dropdown-content">
+        <a href="navigator.html">Navigator</a>
+        <a href="window.html">Window</a>
+        <a href="screen.html">Screen</a>
+        <a href="location.html">Location</a>
+        <a href="geolocation.html">Geolocation</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">About</button>
+      <div class="dropdown-content">
+        <a href="aboutme.html">About Me</a>
+        <a href="contectus.html">Contact Us</a>
+      </div> 
+    </div> 
+  </div> 
+
+
+    <div class="container-search">
+      <section class="searchh">
+          <input autocomplete="off" type="text" id="src-text" class="input" name="q" placeholder="Type to Search...">
+          <button type="submit" id="submit" class="btn-submit" value="search" onclick="showPage(1)">Search</button>
+      </section>
+    </div>
+    <div class="container-srcres">
+      <div id="up-down-btns">
+        <button type="button" name="f-download" id="download" onclick="fileDownload()">Download as</button>
+        <select name="options" id="options">
+          <option value="json">JSON</option>
+          <option value="csv">CSV</option>
+          <option value="xml">XML</option>
+        </select>
+      </div>
+     <section class="src-res" id="results_info">
+      </section>
+    </div>
+    <script>
+
+function showPage(id) {
+  var apiKey = 'AIzaSyDNZUOIVXdHVDKtNjJxEaLRi883a7z7Iec';
+  var cx = '017797819528819750857:jmzwxfbfxqe';
+  var query = document.getElementById('src-text').value;
+  var x = (id * 10) - 9;
+  var items = "";
+    $.get('https://www.googleapis.com/customsearch/v1?key=' + apiKey + '&cx=' + cx + '&q=' + query + '&start=' + x, function(data){
+    for(var i = 0; i < data.items.length; i++) {
+      items += addResult(i, items, data.items[i].title, data.items[i].formattedUrl, data.items[i].snippet);
+    }
+    items += "<br>";
+    document.getElementById("results_info").innerHTML = items;
+  });
+  loadSelectBtns();
+}
+
+  function myFunction() {
+  var x = document.getElementById("myNav");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+
+$("#src-text").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#submit").click();
+    }
+});
+
+var check = document.getElementsByClassName('page_check');
+$('#select-1').click(function(){
+  for(var i = 0; i <check.length; i++) {
+    check[i].checked = true;
+  }
+});
+
+$('#select-2').click(function(){
+  for(var i = 0; i <check.length; i++) {
+    check[i].checked = false;
+  }
+});
+
+
+function insertAfter(el, referenceNode) {
+  referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+}
+
+var loadSelectBtns = (function() {
+  var executed = false;
+  return function() {
+    if (!executed) {
+      executed = true;
+      var select = document.createElement('div');
+      select.setAttribute("id", "selections");
+      var btn1 = document.createElement("button");
+      btn1.setAttribute("type", "button");
+      btn1.setAttribute("id", "select-1");
+      btn1.setAttribute("class", "select-btn");
+      btn1.innerHTML="Select All";
+      var btn2 = document.createElement("button");
+      btn2.setAttribute("type", "button");
+      btn2.setAttribute("id", "select-2");
+      btn2.setAttribute("class", "select-btn");
+      btn2.innerHTML="Deselect All";
+      var parent = document.getElementById('up-down-btns');
+      insertAfter(select, parent);
+      select.appendChild(btn1);
+      select.appendChild(btn2);
+
+      var check = document.getElementsByClassName('page_check');
+      $('#select-1').click(function(){
+        for(var i = 0; i <check.length; i++) {
+          check[i].checked = true;
+        }
+      });
+
+      $('#select-2').click(function(){
+        for(var i = 0; i <check.length; i++) {
+          check[i].checked = false;
+        }
+      });
+    }
+  };
+})();
+
+function addResult(c, result, title, url, desc) {
+  result = "";
+  result += "<br>\n<input type='checkbox' class='page_check' id='check_" + c + "'>\n<div class='page_item'>\n<ul>\n<li><h2>" + title + "</h2></li>\n";
+  result += "<li><a href='" + url + "'>" + url + "</a></li>\n";
+  result += "<li>" + desc + "</li>\n</ul>\n</div>";
+  return result;
+}
+
+
+function fileDownload() {
+  var x = document.getElementById("options").value;
+  if (x == "json") {
+    fdownload("json");
+  } else if (x == "csv") {
+    fdownload("csv");
+  } else if (x == "xml") {
+    fdownload("xml");
+  }
+}
+
+function fdownload(type) {
+  var check = document.getElementsByClassName('page_check');
+  var selected = new Array();
+  for(var i = 0; i <check.length; i++) {
+    if (check[i].checked == true) {
+      selected.push(check[i].id);
+    }
+  }
+  if (selected.length == 0) {
+    alter("Error", "You didn't select a file.");
+    return;
+  }
+  if (type == "json") {
+    var data = {"Result": []};
+    for(var j = 0; j <selected.length; j++) {
+      var x = document.getElementById(selected[j]);
+      var title = x.nextSibling.nextElementSibling.childNodes[1].children[0].innerText;
+      var url = x.nextSibling.nextElementSibling.childNodes[1].children[1].innerText;
+      var desc = x.nextSibling.nextElementSibling.childNodes[1].children[2].innerText;
+      data.Result.push({"title": title, "url": url, "description": desc});
+    }
+    data = JSON.stringify(data);
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/json;charset=utf-8,' + encodeURI(data);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'searchresults.json';
+    hiddenElement.click();
+  } 
+
+  else if (type == "csv") {
+    var data = "";
+    for(var j = 0; j <selected.length; j++) {
+      var x = document.getElementById(selected[j]);
+      var title = x.nextSibling.nextElementSibling.childNodes[1].children[0].innerText;
+      var url = x.nextSibling.nextElementSibling.childNodes[1].children[1].innerText;
+      var desc = x.nextSibling.nextElementSibling.childNodes[1].children[2].innerText;
+      data += '"' + title + '","'+ url + '","' + desc + '"' + '\n';
+    }
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(data);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'searchresults.csv';
+    hiddenElement.click();
+  } 
+
+  else if (type == "xml") {
+    var data = "<?xml version='1.0' encoding='UTF-8'?>\n<results>\n";
+    for(var j = 0; j <selected.length; j++) {
+      var x = document.getElementById(selected[j]);
+      var title = x.nextSibling.nextElementSibling.childNodes[1].children[0].innerText;
+      var url = x.nextSibling.nextElementSibling.childNodes[1].children[1].innerText;
+      var desc = x.nextSibling.nextElementSibling.childNodes[1].children[2].innerText;
+      data += "<result>\n<title>" + title + "</title>\n<url>" + url + "</url>\n<description>" + desc + "</description>\n</result>\n"
+    }
+    data += "</results>";
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/xml;charset=utf-8,' + encodeURI(data);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'searchresults.xml';
+    hiddenElement.click();
+  }
+}
+   </script>
+  </body>
+</html>

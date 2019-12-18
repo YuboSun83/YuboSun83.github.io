@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Google Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/googleapi.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  </head>
+  <body>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn">Course</button>
+      <div class="dropdown-content">
+        <a href="https://www.zybooks.com/"target="_blank">ZyBooks</a>
+        <a href="https://tophat.com/"target="_blank">TopHat</a>
+        <a href="https://www.google.com/drive/"target="_blank">Google Drive</a>
+        <a href="https://www.w3schools.com/"target="_blank">W3Schools.com</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Search</button>
+      <div class="dropdown-content">
+        <a href="search.html">Search File</a>
+        <a href="googleSearch.html">Search Google</a>
+        <a href="mysearchengine.html">My Search Engine</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Browser</button>
+      <div class="dropdown-content">
+        <a href="navigator.html">Navigator</a>
+        <a href="window.html">Window</a>
+        <a href="screen.html">Screen</a>
+        <a href="location.html">Location</a>
+        <a href="geolocation.html">Geolocation</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">About</button>
+      <div class="dropdown-content">
+        <a href="aboutme.html">About Me</a>
+        <a href="contectus.html">Contact Us</a>
+      </div> 
+    </div> 
+  </div> 
+
+	<!--<p class="search"><a href="#"><input type="text" placeholder="Search"><img src="search.png"></a></p>
+	-->
+
+	<div class="output" style="color:white; font:bold; font-size: 30px;">
+        <p id="width"></p>
+        <p id="height"></p>
+        <p id="awidth"></p>
+        <p id="aheight"></p>
+      </div>
+      <script>
+          document.getElementById("width").innerHTML = 
+          "Screen width: " + screen.width;
+      
+          document.getElementById("height").innerHTML =
+          "Screen Height: " + screen.height;
+      
+          document.getElementById("awidth").innerHTML =
+          "Available Screen Width: " + screen.availWidth;
+      
+          document.getElementById("aheight").innerHTML =
+          "Available Screen Height: " + screen.availHeight;
+        
+      </script>
+      
+
+</body>
+</html>
